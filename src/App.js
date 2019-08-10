@@ -1,24 +1,40 @@
-import React from 'react';
+import React, { Component } from 'react';
+import SearchBar from './components/SearchBar';
+import DayCard from './components/DayCard';
+import DayDetail from './components/DayDetail';
+import { Container, Row, Col } from "reactstrap";
+import sampleData from './data/sample.json';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    days: sampleData.data,
+
+  }
+  render() {
+    return (
+      <Container>
+        <Row>
+          <Col md={7}>
+            <h1>Weather for location</h1>
+          </Col>
+          <Col md={5}>
+            <SearchBar></SearchBar>
+          </Col>
+        </Row>
+        <Row>
+          {this.state.days.map(day => (
+              <DayCard 
+                key={day.ts} 
+              />
+            )
+          )}
+        </Row>
+        <Row>
+          <DayDetail></DayDetail>
+        </Row>
+      </Container>
+    );
+  }
 }
 
 export default App;
