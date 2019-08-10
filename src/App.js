@@ -34,6 +34,8 @@ class App extends Component {
                 low={day.min_temp}
                 precip={day.pop}
                 day={moment(day.datetime, "YYYY-MM-DD").format("dddd")}
+                icon={day.weather.icon}
+                description={day.weather.description}
               />
             )
           )}
