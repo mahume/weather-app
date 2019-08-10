@@ -7,6 +7,7 @@ Display weekly weather.
 ## Built With
 
 - React
+- Reactstrap
 - Styled Components
 
 ## Author

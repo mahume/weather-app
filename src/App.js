@@ -9,10 +9,11 @@ import moment from 'moment';
 class App extends Component {
   state = {
     days: sampleData.data,
-
+    selectedDay: null,
   }
-  componentDidMount() {
-    console.log(this.state.days[0]);
+  componentDidMount() {}
+  selectDay = day => {
+    this.setState({ selectedDay: day })
   }
   render() {
     return (
@@ -29,19 +30,37 @@ class App extends Component {
           {this.state.days.map(day => (
               <DayCard 
                 key={day.ts} 
-                temp={day.temp}
+                current={day.temp}
                 high={day.max_temp}
                 low={day.min_temp}
-                precip={day.pop}
+                precipitation={day.pop}
                 day={moment(day.datetime, "YYYY-MM-DD").format("dddd")}
                 icon={day.weather.icon}
                 description={day.weather.description}
+                selectDay={() => this.selectDay(day)}
               />
             )
           )}
         </Row>
         <Row>
-          <DayDetail></DayDetail>
+          <Col>
+            {this.state.selectedDay 
+              ? (
+                <DayDetail 
+                  current={this.state.selectedDay.temp}
+                  high={this.state.selectedDay.max_temp}
+                  low={this.state.selectedDay.min_temp}
+                  precipitation={this.state.selectedDay.pop}
+                  day={moment(this.state.selectedDay.datetime, "YYYY-MM-DD").format("MMMM Do, YYYY")}
+                  icon={this.state.selectedDay.weather.icon}
+                  description={this.state.selectedDay.weather.description}
+                />
+              )
+              : (
+                <h2>Choose a day about for more details</h2>
+              )
+            }
+          </Col>
         </Row>
       </Container>
     );
