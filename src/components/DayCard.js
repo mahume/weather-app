@@ -10,7 +10,19 @@ const CardWrapper = styled.div`
     width: 75px;
   }
   .card {
+    border: ${props => props.isActive ? '2px solid blue' : '2px solid gray'};
+    cursor: pointer;
     text-align: center;
+  }
+  .card-header {
+    background: ${props => props.isActive ? 'blue' : null};
+    color: ${props => props.isActive ? 'white' : null};
+  }
+  :hover {
+    .card {
+      border: 2px solid blue;
+
+    }
   }
 `
 
@@ -23,13 +35,15 @@ const DayCard = props => {
     day, 
     icon, 
     description, 
-    selectDay 
+    selectDay,
+    isActive,
   } = props;
 
   return (
     <Col>
       <CardWrapper
         onClick={selectDay}
+        isActive={isActive}
       >
         <Card>
           <CardHeader>{day}</CardHeader>

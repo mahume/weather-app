@@ -38,6 +38,7 @@ class App extends Component {
                 icon={day.weather.icon}
                 description={day.weather.description}
                 selectDay={() => this.selectDay(day)}
+                isActive={this.state.selectedDay === day}
               />
             )
           )}

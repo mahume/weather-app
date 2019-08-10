@@ -1,5 +1,13 @@
 import React from 'react';
 import { Card, CardBody } from "reactstrap";
+import styled from "styled-components";
+
+const StyledCard = styled(Card)`
+  text-align: center;
+  h2 {
+    color: violet;
+  }
+`
 
 const DayDetail = props => {
   const {
