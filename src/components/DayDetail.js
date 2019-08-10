@@ -20,17 +20,19 @@ const DayDetail = props => {
   } = props;
   
   return (
-    <Card>
-      <CardBody>
-        <h2>Day Detail for {day}</h2>
-        <p>
-          <img src={`${process.env.PUBLIC_URL}/icons/${icon}.png`} alt={description} />
-        </p>
-        <p><strong>High:</strong>{Math.round(high)}°</p>
-        <p><strong>Low:</strong>{Math.round(low)}°</p>
-        <p><strong>Chance of rain:</strong>{precipitation}%</p>
-      </CardBody>
-    </Card>
+    <StyledCard>
+      <Card>
+        <CardBody>
+          <h2>Day Detail for {day}</h2>
+          <p>
+            <img src={`${process.env.PUBLIC_URL}/icons/${icon}.png`} alt={description} />
+          </p>
+          <p><strong>High:</strong>{Math.round(high)}°</p>
+          <p><strong>Low:</strong>{Math.round(low)}°</p>
+          <p><strong>Chance of rain:</strong>{precipitation}%</p>
+        </CardBody>
+      </Card>
+    </StyledCard>
   )
 }
 
