@@ -1,17 +1,33 @@
 import React, { Component } from 'react';
+import { Container, Row, Col } from "reactstrap";
+import moment from 'moment';
 import SearchBar from './components/SearchBar';
 import DayCard from './components/DayCard';
 import DayDetail from './components/DayDetail';
-import { Container, Row, Col } from "reactstrap";
 import sampleData from './data/sample.json';
-import moment from 'moment';
+import API from './utils/API';
 
 class App extends Component {
   state = {
-    days: sampleData.data,
+    days: [],
+    // days: sampleData.data,
     selectedDay: null,
+    searchedLocation: '',
   }
-  componentDidMount() {}
+  componentDidMount() {
+    this.getWeather('Denver, CO');
+  }
+  getWeather = location => {
+    API.getWeather(location)
+      .then(res => {
+        console.log(res);
+        this.setState({ 
+          days: res.data.data,
+          searchedLocation: `${res.data.city_name}, ${res.data.state_code}`
+        })
+      })
+      .catch(err => console.log(err))
+  }
   selectDay = day => {
     this.setState({ selectedDay: day })
   }
