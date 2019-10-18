@@ -3,6 +3,7 @@
 ## About
 
 Display weekly weather.
+[Test it out!](https://mahume.github.io/weather-app/)
 
 ## Built With
 
@@ -12,4 +13,4 @@ Display weekly weather.
 
 ## Author
 
-[Mike Hume](https://michaelahume.com)
+[Mike Hume](https://mahume.github.io/)
