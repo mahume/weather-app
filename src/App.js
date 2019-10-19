@@ -4,7 +4,7 @@ import moment from 'moment';
 import SearchBar from './components/SearchBar';
 import DayCard from './components/DayCard';
 import DayDetail from './components/DayDetail';
-import sampleData from './data/sample.json';
+// import sampleData from '../data/sample.json';
 import API from './utils/API';
 
 class App extends Component {
